@@ -31,15 +31,16 @@
                                         <h6 class="text-muted font-semibold fw-bold">Pertemuan {{ $materi->pertemuan }}</h6>
                                     </div>
                                     <div class="embed-responsive embed-responsive-item embed-responsive-16by9 w-100">
-                                        <iframe src="https://www.youtube.com/embed/BbXqwXRyL3g" style="width:100%"
-                                            height="300" allowfullscreen></iframe>
+                                        <iframe src="{{ $materi->link_youtube }}" style="width:100%" height="300"
+                                            allowfullscreen></iframe>
 
                                     </div>
                                     <div class="card-body">
                                         <p class="card-text">
                                             {{ $materi->materi }}
                                         </p>
-                                        <a href="#" class="card-link">Download Materi</a>
+                                        <a href="{{ asset('materi/' . $materi->file_materi) }}" class="card-link">Download
+                                            Materi</a>
                                     </div>
                                 </div>
                                 {{-- </a> --}}

@@ -30,11 +30,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             "name" => "required|string",
             "email" => "required|email|unique:users,email",
-            "password" => "required|min:8",
-            'password_confirmation' => "required|confirmed",
+            'password' => 'required|min:8',
+            // 'password_confirmation' => 'required|confirmed',
             "roles" => "required|string"
         ]);
 
