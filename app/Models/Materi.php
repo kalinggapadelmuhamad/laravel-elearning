@@ -17,4 +17,9 @@ class Materi extends Model
         'link_youtube',
         'file_materi'
     ];
+
+    public function mapel()
+    {
+        return $this->belongsTo(Mapel::class);
+    }
 }

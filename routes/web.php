@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MapelController;
+use App\Http\Controllers\MateriController;
+use App\Http\Controllers\StudiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,11 +26,14 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('account', AccountController::class);
 
 
-    // Route::resource('user', UserController::class);
-    // Route::prefix('tempat')->group(function () {
-    //     Route::resource('kategori', KategoriController::class);
-    //     Route::resource('lokasi', LokasiController::class);
-    //     Route::resource('destinasi', DestinasiController::class);
-    // });
+    Route::resource('users', UserController::class);
+    Route::prefix('studi')->group(function () {
+        Route::resource('mapel', MapelController::class);
+        Route::get('mapels/{mapel}', [StudiController::class, 'detailMapel'])->name('detailMapel');
+        Route::get('mapels/semester/{mapel}/{semester}', [StudiController::class, 'detailMapelSemester'])->name('detailMapelSemester');
+
+        Route::resource('materi', MateriController::class);
+        //     Route::resource('destinasi', DestinasiController::class);
+    });
     // Route::resource('like', LikeController::class);
 });

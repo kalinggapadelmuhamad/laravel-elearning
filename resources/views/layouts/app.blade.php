@@ -29,23 +29,46 @@
 
     <body>
         <script src="{{ asset('assets/static/js/initTheme.js') }}"></script>
-        <div id="app">
+        @if (Auth::user()->role == 'admin')
+            <div id="app">
 
-            <!-- Sidebar -->
-            @include('components.sidebar')
-            <div id="main" class="layout-navbar navbar-fixed">
+                <!-- Sidebar -->
+
+                @include('components.sidebar')
+
+
+                <div id="main" class="layout-navbar navbar-fixed">
+
+                    <!-- Header -->
+                    @include('components.header')
+
+                    <!-- Content -->
+                    @yield('main')
+
+                    <!-- Footer -->
+                    {{-- @include('components.footer') --}}
+                </div>
+            </div>
+        @else
+            <div class="container">
+
 
                 <!-- Header -->
                 @include('components.header')
 
-                <!-- Content -->
-                @yield('main')
+
+                <div class="card mt-5 bg-transparent">
+                    <div class="card-body">
+
+                        @yield('main')
+
+                    </div>
+                </div>
 
                 <!-- Footer -->
                 {{-- @include('components.footer') --}}
             </div>
-        </div>
-
+        @endif
 
         <script src="{{ asset('assets/static/js/components/dark.js') }}"></script>
         <script src="{{ asset('assets/extensions/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>

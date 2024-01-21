@@ -13,4 +13,9 @@ class Mapel extends Model
         'name',
         'code'
     ];
+
+    public function materi()
+    {
+        return $this->hasMany(Materi::class);
+    }
 }

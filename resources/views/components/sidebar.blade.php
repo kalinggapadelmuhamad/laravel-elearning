@@ -53,7 +53,7 @@
                 </li>
 
                 <li class="sidebar-item {{ $type_menu == 'users' ? 'active' : '' }}">
-                    <a href="index.html" class='sidebar-link'>
+                    <a href="{{ route('users.index') }}" class='sidebar-link'>
                         <i class="bi bi-people-fill"></i>
                         <span>Users</span>
                     </a>
@@ -61,7 +61,7 @@
 
                 </li>
 
-                <li class="sidebar-item  has-sub {{ $type_menu == 'users' ? 'active' : '' }}">
+                <li class="sidebar-item  has-sub {{ $type_menu == 'studi' ? 'active' : '' }}">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-collection-fill"></i>
                         <span>Detail Studi</span>
@@ -69,13 +69,13 @@
 
                     <ul class="submenu ">
 
-                        <li class="submenu-item {{ Request::is('studi/mat_pelajaran') ? 'active' : '' }}">
-                            <a href="extra-component-avatar.html" class="submenu-link">Mata Pelajaran</a>
+                        <li class="submenu-item {{ Request::is('studi/mapel') ? 'active' : '' }}">
+                            <a href="{{ route('mapel.index') }}" class="submenu-link">Mata Pelajaran</a>
 
                         </li>
 
                         <li class="submenu-item {{ Request::is('studi/materi') ? 'active' : '' }} ">
-                            <a href="extra-component-divider.html" class="submenu-link">Materi</a>
+                            <a href="{{ route('materi.index') }}" class="submenu-link">Materi</a>
                         </li>
 
                     </ul>
