@@ -74,7 +74,7 @@ class MapelController extends Controller
     public function update(Request $request, Mapel $mapel)
     {
         $request->validate([
-            'name' => 'required|string|unique:mapels,name,' . $mapel->id,
+            'name' => 'required|string',
         ]);
 
         $mapel->update([
