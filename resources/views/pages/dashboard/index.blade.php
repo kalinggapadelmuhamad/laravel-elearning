@@ -11,7 +11,7 @@
 @section('main')
     <div id="main-content">
         <div class="page-heading">
-            @if (Auth::user()->role == 'admin')
+            @if (Auth::user())
                 <h3>Dashboard Statistik</h3>
             @else
                 <h3>Aplikasi Pembelajran Sejarah</h3>
@@ -19,7 +19,7 @@
         </div>
         <div class="page-content">
             <section class="row">
-                @if (Auth::user()->role == 'admin')
+                @if (Auth::user())
                     <div class="col-12">
                         <div class="row">
                             <div class="col-6 col-lg-3 col-md-6">

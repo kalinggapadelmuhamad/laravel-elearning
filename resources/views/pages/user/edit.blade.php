@@ -94,7 +94,7 @@
                                         <div class="selectgroup w-100">
                                             <label class="selectgroup-item">
                                                 <input type="radio" name="roles" value="admin"
-                                                    class="selectgroup-input" {{ $user->role == 'admin' ? 'cheked' : '' }}>
+                                                    class="selectgroup-input" {{ $user->role == 'admin' ? 'checked' : '' }}>
                                                 <span class="selectgroup-button">Admin</span>
                                             </label>
                                             <label class="selectgroup-item">

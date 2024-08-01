@@ -20,16 +20,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', 'login');
+Route::get('/', [DashboardController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', [DashboardController::class, 'index'])->name('home');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('account', AccountController::class);
 
-    Route::prefix('studi')->group(function () {
-        Route::get('mapels/{mapel}', [StudiController::class, 'detailMapel'])->name('detailMapel');
-        Route::get('mapels/semester/{mapel}/{semester}', [StudiController::class, 'detailMapelSemester'])->name('detailMapelSemester');
-    });
+    // Route::prefix('studi')->group(function () {
+    //     Route::get('mapels/{mapel}', [StudiController::class, 'detailMapel'])->name('detailMapel');
+    //     Route::get('mapels/semester/{mapel}/{semester}', [StudiController::class, 'detailMapelSemester'])->name('detailMapelSemester');
+    // });
 
     Route::middleware('App\http\Middleware\Admin')->group(function () {
         Route::resource('users', UserController::class);
@@ -39,4 +39,9 @@ Route::middleware(['auth'])->group(function () {
             Route::resource('mapel', MapelController::class);
         });
     });
+});
+
+Route::prefix('studi')->group(function () {
+    Route::get('mapels/{mapel}', [StudiController::class, 'detailMapel'])->name('detailMapel');
+    Route::get('mapels/semester/{mapel}/{semester}', [StudiController::class, 'detailMapelSemester'])->name('detailMapelSemester');
 });

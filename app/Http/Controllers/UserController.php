@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index()
     {
         $type_menu = 'users';
-        $users = User::where('role', '!=', 'admin')->latest()->get();
+        $users = User::latest()->get();
         return view('pages.user.index', compact('type_menu', 'users'));
     }
 

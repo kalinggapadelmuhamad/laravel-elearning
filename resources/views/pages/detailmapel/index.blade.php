@@ -11,7 +11,7 @@
 @section('main')
     <div id="main-content">
         <div class="page-heading">
-            @if (Auth::user()->role == 'admin')
+            @if (Auth::user())
                 <h3>Dashboard Statistik</h3>
             @else
                 <h3>{{ $mapel->name }}</h3>

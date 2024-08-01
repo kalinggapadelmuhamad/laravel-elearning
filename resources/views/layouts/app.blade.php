@@ -29,7 +29,7 @@
 
     <body>
         <script src="{{ asset('assets/static/js/initTheme.js') }}"></script>
-        @if (Auth::user()->role == 'admin')
+        @if (Auth::user())
             <div id="app">
 
                 <!-- Sidebar -->

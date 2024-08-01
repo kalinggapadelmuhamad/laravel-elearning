@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand navbar-light navbar-fixed-top">
         <div class="container-fluid">
-            @if (Auth::user()->role == 'admin')
+            @if (Auth::user())
                 <a href="#" class="burger-btn d-lg-none d-block me-3">
                     <i class="bi bi-justify fs-3"></i>
                 </a>
@@ -35,7 +35,7 @@
                     </svg>
                 </div>
             @else
-                <a href="{{ route('home') }}"><i class="bi bi-chevron-left me-3"></i></a>
+                <a href="/"><i class="bi bi-chevron-left me-3"></i></a>
                 <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                         aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20"
@@ -73,52 +73,53 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <div class="ms-auto dropdown">
-                    <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <div class="user-menu d-flex">
-                            <div class="user-name text-end me-3">
-                                <h6 class="mb-0 text-gray-600">{{ Auth::user()->name }}</h6>
-                                <p class="mb-0 text-sm text-gray-600">{{ ucfirst(Auth::user()->role) }}</p>
-                            </div>
-                            <div class="user-img d-flex align-items-center">
-                                <div class="avatar avatar-md">
-                                    <img src="{{ asset('assets/compiled/jpg/2.jpg') }}">
+            @if (Auth::user())
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="ms-auto dropdown">
+                        <a href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="user-menu d-flex">
+                                <div class="user-name text-end me-3">
+                                    <h6 class="mb-0 text-gray-600">{{ Auth::user()->name }}</h6>
+                                    <p class="mb-0 text-sm text-gray-600">{{ ucfirst(Auth::user()->role) }}</p>
+                                </div>
+                                <div class="user-img d-flex align-items-center">
+                                    <div class="avatar avatar-md">
+                                        <img src="{{ asset('assets/compiled/jpg/2.jpg') }}">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
-                        style="min-width: 11rem;">
-                        @php
-                            $fullName = Auth::user()->name;
-                            $nameParts = explode(' ', $fullName);
-                            $firstName = $nameParts[0];
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
+                            style="min-width: 11rem;">
+                            @php
+                                $fullName = Auth::user()->name;
+                                $nameParts = explode(' ', $fullName);
+                                $firstName = $nameParts[0];
 
-                        @endphp
-                        <li>
-                            <h6 class="dropdown-header">Hello, {{ $firstName }}</h6>
-                        </li>
-                        <li><a class="dropdown-item" href="{{ route('account.index') }}"><i
-                                    class="icon-mid bi bi-person me-2"></i>
-                                Profil Saya</a></li>
-                        <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i
-                                    class="icon-mid bi bi-box-arrow-left me-2"></i>
-                                Keluar
-                            </a>
-                            <form method="POST" id="logout-form" action="{{ route('logout') }}">
-                                @csrf
-                            </form>
-                        </li>
+                            @endphp
+                            <li>
+                                <h6 class="dropdown-header">Hello, {{ $firstName }}</h6>
+                            </li>
+                            <li><a class="dropdown-item" href="{{ route('account.index') }}"><i
+                                        class="icon-mid bi bi-person me-2"></i>
+                                    Profil Saya</a></li>
+                            <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i
+                                        class="icon-mid bi bi-box-arrow-left me-2"></i>
+                                    Keluar
+                                </a>
+                                <form method="POST" id="logout-form" action="{{ route('logout') }}">
+                                    @csrf
+                                </form>
+                            </li>
 
-                    </ul>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </nav>
 </header>
